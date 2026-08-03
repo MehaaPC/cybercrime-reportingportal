@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Home - Cyber Crime Reporting Portal{% endblock %}
+{% block content %}
+<div class="py-5 text-center">
+    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4"
+         style="width:70px;height:70px;background:rgba(255,59,59,0.12);border:1px solid rgba(255,59,59,0.3);">
+        <i class="bi bi-shield-lock-fill" style="font-size:2rem;color:#ff3b3b;"></i>
+    </div>
+    <h1 class="fw-bold mb-3" style="font-size:2.6rem;">Report Cyber Crimes.<br>Stay Protected.</h1>
+    <p class="mx-auto mb-4" style="max-width:560px;color:var(--text-muted);font-size:1.1rem;">
+        A secure platform to report phishing, fraud, harassment, and other cyber crimes —
+        and track your complaint status every step of the way.
+    </p>
+    {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-4 me-2">Get Started</a>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+    {% else %}
+        <a href="{{ url_for('report_crime') }}" class="btn btn-primary btn-lg px-4"><i class="bi bi-file-earmark-plus me-2"></i>File a Report</a>
+    {% endif %}
+</div>
+
+<div class="row g-4 mt-3 mb-5">
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <i class="bi bi-pencil-square mb-3" style="font-size:1.8rem;color:#ff3b3b;"></i>
+            <h5>Easy Reporting</h5>
+            <p style="color:var(--text-muted);">Submit incident details, location, and evidence through a simple guided form.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <i class="bi bi-graph-up-arrow mb-3" style="font-size:1.8rem;color:#ff3b3b;"></i>
+            <h5>Track Status</h5>
+            <p style="color:var(--text-muted);">Every report gets a unique complaint number so you can follow its progress.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <i class="bi bi-lock-fill mb-3" style="font-size:1.8rem;color:#ff3b3b;"></i>
+            <h5>Confidential</h5>
+            <p style="color:var(--text-muted);">Your report is only visible to you and the investigating admin team.</p>
+        </div>
+    </div>
+</div>
+
+<div class="mb-5">
+    <h3 class="text-center mb-2">Stay Safe Online</h3>
+    <p class="text-center mb-4" style="color:var(--text-muted);">Simple habits that prevent most cyber crimes</p>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card p-4 h-100 text-center">
+                <i class="bi bi-key-fill mb-3" style="font-size:2rem;color:#ff3b3b;"></i>
+                <h6>Use Strong Passwords</h6>
+                <p style="color:var(--text-muted);font-size:0.9rem;">Use unique passwords with letters, numbers & symbols. Never reuse across sites.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card p-4 h-100 text-center">
+                <i class="bi bi-envelope-exclamation-fill mb-3" style="font-size:2rem;color:#ff3b3b;"></i>
+                <h6>Beware of Phishing</h6>
+                <p style="color:var(--text-muted);font-size:0.9rem;">Never click suspicious links or share OTPs, even if the sender looks familiar.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card p-4 h-100 text-center">
+                <i class="bi bi-shield-fill-check mb-3" style="font-size:2rem;color:#ff3b3b;"></i>
+                <h6>Enable 2FA</h6>
+                <p style="color:var(--text-muted);font-size:0.9rem;">Turn on two-factor authentication on every account that supports it.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card p-4 h-100 text-center">
+                <i class="bi bi-wifi-off mb-3" style="font-size:2rem;color:#ff3b3b;"></i>
+                <h6>Avoid Public Wi-Fi for Banking</h6>
+                <p style="color:var(--text-muted);font-size:0.9rem;">Don't access bank accounts or enter passwords on open public networks.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

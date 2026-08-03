@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h3 class="mb-4">Admin Dashboard</h3>
+<div class="row g-3 mb-4">
+    <div class="col-md-3"><div class="card p-3 text-center"><h6>Total Reports</h6><h2>{{ stats.total }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 text-center"><h6>Pending</h6><h2 class="text-warning">{{ stats.pending }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 text-center"><h6>Investigating</h6><h2 class="text-primary">{{ stats.investigating }}</h2></div></div>
+    <div class="col-md-3"><div class="card p-3 text-center"><h6>Resolved</h6><h2 class="text-success">{{ stats.resolved }}</h2></div></div>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered bg-white">
+    <thead class="table-dark">
+        <tr><th>Complaint No.</th><th>Reported By</th><th>Type</th><th>Location</th><th>Date Filed</th><th>Status</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+        {% for r in reports %}
+        <tr>
+            <td>{{ r.complaint_no }}</td>
+            <td>{{ r.reporter.name }}</td>
+            <td>{{ r.crime_type }}</td>
+            <td>{{ r.location }}</td>
+            <td>{{ r.date_filed.strftime('%d %b %Y') }}</td>
+            <td class="status-{{ r.status.replace(' ', '-') }}">{{ r.status }}</td>
+            <td><a href="{{ url_for('admin_report_detail', report_id=r.id) }}" class="btn btn-sm btn-outline-primary">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

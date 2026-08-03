@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Report Detail{% endblock %}
+{% block content %}
+<div class="card p-4">
+    <h4>Complaint {{ report.complaint_no }}</h4>
+    <table class="table">
+        <tr><th style="width:200px;">Reported By</th><td>{{ report.reporter.name }} ({{ report.reporter.email }})</td></tr>
+        <tr><th>Crime Type</th><td>{{ report.crime_type }}</td></tr>
+        <tr><th>Description</th><td>{{ report.description }}</td></tr>
+        <tr><th>Location</th><td>{{ report.location }}</td></tr>
+        <tr><th>Date Filed</th><td>{{ report.date_filed.strftime('%d %b %Y, %I:%M %p') }}</td></tr>
+        <tr>
+            <th>Evidence</th>
+            <td>
+                {% if report.evidence_file %}
+                    <a href="{{ url_for('static', filename='uploads/' + report.evidence_file) }}" target="_blank">View File</a>
+                {% else %}
+                    <span class="text-muted">No file uploaded</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr><th>Current Status</th><td class="status-{{ report.status.replace(' ', '-') }}">{{ report.status }}</td></tr>
+    </table>
+    <form method="POST" class="row g-2 align-items-end">
+        {{ form.hidden_tag() }}
+        <div class="col-auto">
+            {{ form.status.label(class="form-label") }}
+            {{ form.status(class="form-select") }}
+        </div>
+        <div class="col-auto">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-link mt-2">&larr; Back to Dashboard</a>
+</div>
+{% endblock %}

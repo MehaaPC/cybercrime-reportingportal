@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}File a Report{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4">
+            <h3 class="mb-3">File a Cyber Crime Report</h3>
+            <form method="POST" enctype="multipart/form-data" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.crime_type.label(class="form-label") }}
+                    {{ form.crime_type(class="form-select") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control", rows=5, placeholder="Describe what happened, when, and any relevant details...") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.location.label(class="form-label") }}
+                    {{ form.location(class="form-control", placeholder="e.g. Chennai, Tamil Nadu") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.evidence.label(class="form-label") }}
+                    {{ form.evidence(class="form-control") }}
+                    <div class="form-text">Optional. JPG, PNG, or PDF, max 5MB.</div>
+                </div>
+                {{ form.submit(class="btn btn-primary", id="submitBtn", style="display:none;") }}
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function checkFields() {
+        const crimeType = document.getElementById('crime_type');
+        const description = document.getElementById('description');
+        const location = document.getElementById('location');
+        const allFilled = crimeType.value.trim() !== '' &&
+                           description.value.trim().length >= 20 &&
+                           location.value.trim() !== '';
+        submitBtn.style.display = allFilled ? 'inline-block' : 'none';
+    }
+
+    form.addEventListener('input', checkFields);
+    form.addEventListener('change', checkFields);
+    checkFields();
+});
+</script>
+{% endblock %}

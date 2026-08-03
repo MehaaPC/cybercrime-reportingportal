@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}My Reports{% endblock %}
+{% block content %}
+<h3 class="mb-4">My Reports</h3>
+{% if reports %}
+<div class="table-responsive">
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr><th>Complaint No.</th><th>Type</th><th>Location</th><th>Date Filed</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+        {% for r in reports %}
+        <tr>
+            <td>{{ r.complaint_no }}</td>
+            <td>{{ r.crime_type }}</td>
+            <td>{{ r.location }}</td>
+            <td>{{ r.date_filed.strftime('%d %b %Y, %I:%M %p') }}</td>
+            <td class="status-{{ r.status.replace(' ', '-') }}">{{ r.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% else %}
+<div class="alert alert-info">You haven't filed any reports yet. <a href="{{ url_for('report_crime') }}">File one now</a>.</div>
+{% endif %}
+
+<div class="mt-5">
+    <h4 class="mb-4"><i class="bi bi-shield-exclamation me-2" style="color:#ff3b3b;"></i>Know These Common Cyber Attacks</h4>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 overflow-hidden">
+                <img src="{{ url_for('static', filename='img/phishing.svg') }}" alt="Phishing attack" style="width:100%;height:180px;object-fit:cover;">
+                <div class="p-3">
+                    <h6>Phishing</h6>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Fake emails or messages trick you into revealing passwords or OTPs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 overflow-hidden">
+                <img src="{{ url_for('static', filename='img/ransomware.svg') }}" alt="Ransomware attack" style="width:100%;height:180px;object-fit:cover;">
+                <div class="p-3">
+                    <h6>Ransomware</h6>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Malware locks your files or device until a ransom is paid.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 overflow-hidden">
+                <img src="{{ url_for('static', filename='img/hacking.svg') }}" alt="Hacking / unauthorized access" style="width:100%;height:180px;object-fit:cover;">
+                <div class="p-3">
+                    <h6>Unauthorized Access</h6>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Attackers break into accounts or systems using stolen credentials.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 overflow-hidden">
+                <img src="{{ url_for('static', filename='img/identity_theft.svg') }}" alt="Identity theft" style="width:100%;height:180px;object-fit:cover;">
+                <div class="p-3">
+                    <h6>Identity Theft</h6>
+                    <p style="color:var(--text-muted);font-size:0.85rem;">Your personal information is stolen and misused to impersonate you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

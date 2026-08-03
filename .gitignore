@@ -1,0 +1,9 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+backend/cybercrime.db
+backend/static/uploads/*
+!backend/static/uploads/.gitkeep
+backend/.env
+.env

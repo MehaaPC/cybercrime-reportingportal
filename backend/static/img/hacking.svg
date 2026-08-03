@@ -1,0 +1,35 @@
+<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1a38"/>
+      <stop offset="100%" stop-color="#0a1128"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="320" rx="16" fill="url(#bgGrad3)"/>
+
+  <!-- Desk -->
+  <rect x="50" y="235" width="150" height="14" rx="4" fill="#16234a"/>
+
+  <!-- Hooded hacker figure -->
+  <ellipse cx="120" cy="190" rx="44" ry="50" fill="#060b18" stroke="#ff3b3b" stroke-width="1.5"/>
+  <path d="M90 165 Q120 130 150 165 L150 190 Q120 160 90 190 Z" fill="#060b18" stroke="#ff3b3b" stroke-width="1.5"/>
+  <circle cx="106" cy="182" r="3.5" fill="#ff3b3b"/>
+  <circle cx="134" cy="182" r="3.5" fill="#ff3b3b"/>
+
+  <!-- Laptop in front -->
+  <rect x="80" y="205" width="90" height="45" rx="4" fill="#16234a" stroke="#2a3a66" stroke-width="2"/>
+  <rect x="88" y="211" width="74" height="32" rx="2" fill="#0a1128"/>
+  <text x="95" y="230" font-family="monospace" font-size="9" fill="#4ade80">&gt; access...</text>
+
+  <!-- Shield with lock (target system) -->
+  <path d="M280 90 L330 105 L330 160 Q330 200 280 220 Q230 200 230 160 L230 105 Z" fill="#16234a" stroke="#ff3b3b" stroke-width="2.5"/>
+  <rect x="262" y="150" width="36" height="28" rx="5" fill="#0a1128"/>
+  <path d="M270 150 L270 138 Q270 125 280 125 Q290 125 290 138 L290 150" fill="none" stroke="#8a93ab" stroke-width="6"/>
+  <circle cx="280" cy="163" r="4" fill="#ff3b3b"/>
+
+  <!-- Crack lines through shield -->
+  <path d="M280 105 L268 140 L288 155 L272 200" stroke="#ff3b3b" stroke-width="2" fill="none" opacity="0.8"/>
+
+  <!-- Connection line from laptop to shield -->
+  <path d="M170 220 Q220 210 262 178" stroke="#ff3b3b" stroke-width="2" fill="none" stroke-dasharray="5 5"/>
+</svg>
